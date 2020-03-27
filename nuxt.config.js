@@ -18,16 +18,18 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#3F4756' },
   /*
   ** Global CSS
   */
   css: [
+    { src: '~assets/css/public.scss', lang: 'scss' }
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/repository'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -48,6 +50,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'https://kitsu.io/api/edge'
   },
   /*
   ** Build configuration
