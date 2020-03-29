@@ -43,8 +43,7 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/now-builder'
+    '@nuxtjs/axios'
   ],
   /*
   ** Axios module configuration
