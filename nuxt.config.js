@@ -1,3 +1,8 @@
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/ongoing_research/'
+  }
+} : {}
 
 export default {
   mode: 'universal',
@@ -25,6 +30,9 @@ export default {
   css: [
     { src: '~assets/css/public.scss', lang: 'scss' }
   ],
+  router: {
+    ...routerBase
+  },
   /*
   ** Plugins to load before mounting the App
   */
