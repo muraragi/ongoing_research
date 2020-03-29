@@ -1,6 +1,6 @@
 export default $axios => resource => ({
-  index () {
-    return $axios.$get(`${resource}`)
+  index (params) {
+    return $axios.$get(`${resource}`, { params })
   },
 
   show (id) {
