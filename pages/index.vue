@@ -1,6 +1,6 @@
 <template lang="pug">
-  .index.container(:style="backgroundImage")
-    anime-list(:animeList="animeList.data")
+  .index.container
+    title-list(:titleList="titleList.data")
 </template>
 
 <script>
@@ -8,31 +8,38 @@ import { mapState } from 'vuex'
 
 export default {
 
-  async asyncData ({ app }) {
+  async asyncData ({ app, store }) {
     return {
-      animeList: await app.$animeRepository.index({ 'filter[status]': 'current', sort: 'popularityRank' })
+      titleList: await app[`$${store.state.titleMode}Repository`].index({ 'filter[status]': 'current', sort: '-averageRating' })
     }
   },
   data () {
     return {
-      animeList: []
+      titleList: []
+    }
+  },
+  watch: {
+    async titleMode (newValue) {
+      console.log()
+      this.titleList = await this[`$${newValue}Repository`].index({ 'filter[status]': 'current', sort: '-averageRating' })
     }
   },
   computed: {
     ...mapState({
-      activeAnimeIndex: state => state.activeAnimeIndex
+      activeTitleIndex: state => state.activeTitleIndex,
+      titleMode: state => state.titleMode
     }),
-    backgroundImage () {
-      let backgroundImage = ''
-      if (this.activeAnime.attributes.coverImage && 'original' in this.activeAnime.attributes.coverImage) {
-        backgroundImage = `url(${this.activeAnime.attributes.coverImage.original})`
-      }
-      return {
-        backgroundImage
-      }
-    },
-    activeAnime () {
-      return this.animeList.data[this.activeAnimeIndex]
+    // backgroundImage () {
+    //   let backgroundImage = ''
+    //   if (this.activeTitle.attributes.coverImage && 'original' in this.activeTitle.attributes.coverImage) {
+    //     backgroundImage = `url(${this.activeTitle.attributes.coverImage.original})`
+    //   }
+    //   return {
+    //     backgroundImage
+    //   }
+    // },
+    activeTitle () {
+      return this.titleList.data[this.activeTitleIndex]
     }
   }
 }

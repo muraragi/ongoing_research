@@ -1,9 +1,11 @@
 import Vue from 'vue'
 
-import AnimeList from '~/components/AnimeList'
-import AnimeCard from '~/components/AnimeCard'
+import TitleList from '~/components/TitleList'
+import TitleCard from '~/components/TitleCard'
+import Header from '~/components/Header'
 
 export default () => {
-  Vue.component('anime-list', AnimeList)
-  Vue.component('anime-card', AnimeCard)
+  Vue.component('title-list', TitleList)
+  Vue.component('title-card', TitleCard)
+  Vue.component('app-header', Header)
 }

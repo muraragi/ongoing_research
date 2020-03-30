@@ -1,13 +1,17 @@
 export const state = () => ({
   counter: 0,
-  activeAnimeIndex: 0
+  activeTitleIndex: 0,
+  titleMode: 'anime'
 })
 
 export const mutations = {
   increment (state) {
     state.counter++
   },
-  setActiveAnimeIndex (state, index) {
-    state.activeAnimeIndex = index
+  setActiveTitleIndex (state, index) {
+    state.activeTitleIndex = index
+  },
+  setCurrentTitleMode (state, titleMode) {
+    state.titleMode = titleMode
   }
 }

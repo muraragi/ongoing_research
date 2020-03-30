@@ -1,8 +1,8 @@
 <template lang="pug">
-  .anime-card(
+  .title-card(
     :style="cardStyles"
-    :class="{ 'active': index === activeAnimeIndex }"
-    @click="setActiveAnimeIndex(index)"
+    :class="{ 'active': index === activeTitleIndex }"
+    @click="setActiveTitleIndex(index)"
   )
 </template>
 
@@ -11,7 +11,7 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   props: {
-    anime: {
+    title: {
       type: Object,
       default: () => {}
     },
@@ -22,12 +22,12 @@ export default {
   },
   computed: {
     ...mapState({
-      activeAnimeIndex: state => state.activeAnimeIndex
+      activeTitleIndex: state => state.activeTitleIndex
     }),
     cardStyles () {
       const cardStyles = {}
-      if (this.anime.attributes.posterImage && 'medium' in this.anime.attributes.posterImage) {
-        cardStyles.backgroundImage = `url(${this.anime.attributes.posterImage.medium})`
+      if (this.title.attributes.posterImage && 'medium' in this.title.attributes.posterImage) {
+        cardStyles.backgroundImage = `url(${this.title.attributes.posterImage.medium})`
       } else {
         cardStyles.backgroundColor = '#FFF'
       }
@@ -36,14 +36,14 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setActiveAnimeIndex: 'setActiveAnimeIndex'
+      setActiveTitleIndex: 'setActiveTitleIndex'
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .anime-card {
+  .title-card {
     width: 200px;
     height: 280px;
     border-radius: 6px;

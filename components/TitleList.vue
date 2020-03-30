@@ -1,8 +1,8 @@
 <template lang="pug">
-  .anime-list(:style="listOffset")
-    anime-card(
-      v-for="(anime, index) in animeList"
-      :key="index" :anime="anime"
+  .title-list(:style="listOffset")
+    title-card(
+      v-for="(title, index) in titleList"
+      :key="index" :title="title"
       :index="index"
     )
 </template>
@@ -12,18 +12,18 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
-    animeList: {
+    titleList: {
       type: Array,
       default: () => []
     }
   },
   computed: {
     ...mapState({
-      activeAnimeIndex: state => state.activeAnimeIndex
+      activeTitleIndex: state => state.activeTitleIndex
     }),
     listOffset () {
       return {
-        left: `${this.activeAnimeIndex === 0 ? 30 : 130 - (this.activeAnimeIndex * 230)}px`
+        left: `${this.activeTitleIndex === 0 ? 30 : 130 - (this.activeTitleIndex * 230)}px`
       }
     }
   }
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .anime-list {
+  .title-list {
     position: absolute;
     display: flex;
     align-items: flex-end;
