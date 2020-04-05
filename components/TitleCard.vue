@@ -4,6 +4,9 @@
     :class="{ 'active': index === activeTitleIndex }"
     @click="setActiveTitleIndex(index)"
   )
+    .description
+      .title {{ title.attributes.canonicalTitle }}
+      .score {{ title.attributes.averageRating }} / 100
 </template>
 
 <script>
@@ -54,9 +57,22 @@ export default {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     transition: width .2s ease, height .2s ease;
     transform-origin: bottom left;
+    display: flex;
     &.active {
       width: 260px;
       height: 364px;
+    }
+    .description {
+      width: 100%;
+      background-color: rgba(0,0,0,0.3);
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 60%);
+      padding: 12px;
+      align-self: flex-end;
+      .title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 </style>

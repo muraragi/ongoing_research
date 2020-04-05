@@ -14,6 +14,18 @@
   }
 }
 
+@mixin slide-in() {
+  .slide-in-enter-active {
+    transition: all .2s ease;
+  }
+  .slide-in-leave-active {
+    transition: all .2s ease;
+  }
+  .slide-in-enter, .slide-in-leave-to {
+    transform: translateY(500px);
+  }
+}
+
 /**
  * Loading animation
  */

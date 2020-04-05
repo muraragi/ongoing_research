@@ -29,7 +29,8 @@ export default {
   */
   plugins: [
     '~/plugins/repository',
-    '~/plugins/components'
+    '~/plugins/components',
+    '~/plugins/outsideClick'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -43,7 +44,8 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/svg-sprite'
   ],
   /*
   ** Axios module configuration

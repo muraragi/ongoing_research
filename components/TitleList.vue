@@ -37,6 +37,11 @@ export default {
     align-items: flex-end;
     bottom: 60px;
     left: 30px;
-    transition: left .2s ease;
+    transition: left .2s ease, transform .2s ease;
+    &.hidden {
+      transform: translateY(280px);
+      pointer-events: none;
+      filter: blur(2px)
+    }
   }
 </style>
